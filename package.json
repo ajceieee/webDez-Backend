@@ -1,0 +1,37 @@
+{
+  "name": "webdez-backend",
+  "version": "1.0.0",
+  "description": "Backend for webdez",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajceieee/webDez-Backend.git"
+  },
+  "author": "Shan Shaji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajceieee/webDez-Backend/issues"
+  },
+  "homepage": "https://github.com/ajceieee/webDez-Backend#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.6",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1"
+  }
+}
