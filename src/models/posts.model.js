@@ -40,6 +40,7 @@ const PostSchema = mongoose.Schema({
   comments: [
     {
       type: Schema.Types.ObjectId,
+      ref: 'Comment',
     },
   ],
 })
