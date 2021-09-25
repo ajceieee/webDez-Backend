@@ -1,11 +1,8 @@
 const mongoose = require('mongoose')
-
-const User = require('./users.model')
-const Comment = require('./comments.model')
-
+const dummy = require('mongoose-dummy')
+const ignoredFields = ['_id', '__v', /detail.*_info/]
 const Schema = mongoose.Schema
-
-const PostSchema = mongoose.Schema({
+let schemaDefinition = new mongoose.Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -43,5 +40,23 @@ const PostSchema = mongoose.Schema({
     },
   ],
 })
+let model = mongoose.model('Post', schemaDefinition)
+let randomObject = dummy(model, {
+  ignore: ignoredFields,
+  returnDate: true,
+})
+console.log(randomObject)
 
-module.exports = mongoose.model('Post', PostSchema)
+// {
+//   "user": "614f82e9fd606f98221f63f0",
+//   "title": "Javier.Bode",
+//   "votes": 7,
+//   "photoUrl": "Ophelia53",
+//   "videoUrl": "Julio40",
+//   "category": "Danial78",
+//   "comments": [
+//     "614f82e9fd606f98221f63f0",
+//   ],
+//   "createdOn": "2021-09-25T01:43:14.750Z",
+//   "decription": "Brenden81"
+// }

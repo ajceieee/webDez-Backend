@@ -1,5 +1,12 @@
+const User = require('../models/users.model')
+
 exports.createUser = (req, res, next) => {
-  res.send('created user')
+  const user = new User(req.body)
+
+  user.save((err, result) => {
+    if (err) console.log(err)
+    else console.log(result)
+  })
 }
 exports.getAllUsers = (req, res, next) => {
   res.send('All users')

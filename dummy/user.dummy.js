@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
+const dummy = require('mongoose-dummy')
+const ignoredFields = ['_id', '__v', /detail.*_info/]
 const Schema = mongoose.Schema
-
-const userSchema = new mongoose.Schema({
+let schemaDefinition = new mongoose.Schema({
   id: {
     unique: true,
     type: String,
@@ -23,5 +24,9 @@ const userSchema = new mongoose.Schema({
     type: Date,
   },
 })
-
-module.exports = mongoose.model('User', userSchema)
+let model = mongoose.model('Post', schemaDefinition)
+let randomObject = dummy(model, {
+  ignore: ignoredFields,
+  returnDate: true,
+})
+console.log(JSON.stringify(randomObject))
