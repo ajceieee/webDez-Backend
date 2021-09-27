@@ -1,5 +1,5 @@
 exports.createPost = (req, res, next) => {
-  res.send('created Post')
+  console.log(req.body)
 }
 exports.getAllPosts = (req, res, next) => {
   res.send('All Post')

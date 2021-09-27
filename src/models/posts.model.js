@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
-
 const User = require('./users.model')
 const Schema = mongoose.Schema
 
 const PostSchema = mongoose.Schema({
-  user: {
+  postedBy: {
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
