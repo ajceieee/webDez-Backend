@@ -1,26 +1,77 @@
 const User = require('../models/users.model')
 
-exports.createUser = (req, res, next) => {
-  res.send('created user')
+exports.createUser = (req, res) => {
+  const user = new User(req.body)
+
+  user.save((err, result) => {
+    if (err) {
+      res.status(201).json({
+        status: res.statusCode,
+        result: {
+          msg: 'User created successFully',
+          user: result,
+        },
+      })
+    } else {
+      res.status(500).json({
+        status: res.statusCode,
+        result: {
+          error: error,
+        },
+      })
+    }
+  })
 }
-exports.getAllUsers = (req, res, next) => {
-  res.send('All users')
-}
-exports.getUser = async (req, res, next) => {
+
+exports.getAllUsers = async (req, res) => {
   try {
-    const result = await User.userModel.findById(req.params.id)
+    const result = await User.find({})
     res.status(200).json({
+      status: res.statusCode,
       result: result,
     })
   } catch (error) {
-    res.status(400).json({
-      error: error,
+    res.status(500).json({
+      status: res.statusCode,
+      result: {
+        error: error,
+      },
     })
   }
 }
-exports.deleteUser = (req, res) => {
-  res.send('deleteUser')
+
+exports.getUser = async (req, res) => {
+  try {
+    const result = await User.findById(req.params.id)
+    res.status(200).json({
+      status: res.statusCode,
+      result: result,
+    })
+  } catch (error) {
+    res.status(500).json({
+      status: res.statusCode,
+      result: {
+        error: error,
+      },
+    })
+  }
 }
-exports.updateUser = (req, res) => {
-  res.send('updateUser')
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const result = await User.findByIdAndDelete(req.params.id)
+    res.status(202).json({
+      status: res.statusCode,
+      result: result,
+    })
+  } catch (err) {
+    res.status(500).json({
+      status: res.statusCode,
+      result: {
+        error: error,
+      },
+    })
+  }
 }
+
+exports.updateUser = (req, res) => {}

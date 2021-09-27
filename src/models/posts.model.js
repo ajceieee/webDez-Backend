@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const User = require('./users.model')
+const Comment = require('./comments.model')
+
 const Schema = mongoose.Schema
 
 const PostSchema = mongoose.Schema({
@@ -32,9 +34,6 @@ const PostSchema = mongoose.Schema({
   },
   category: {
     type: String,
-  },
-  creator: {
-    type: User,
   },
   comments: [
     {

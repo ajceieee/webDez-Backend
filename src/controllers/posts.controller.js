@@ -1,5 +1,12 @@
+const Post = require('../models/posts.model')
+
 exports.createPost = (req, res, next) => {
-  console.log(req.body)
+  const post = new Post(req.body)
+
+  post.save((err, result) => {
+    if (err) console.log(err)
+    else console.log(result)
+  })
 }
 exports.getAllPosts = (req, res, next) => {
   res.send('All Post')
