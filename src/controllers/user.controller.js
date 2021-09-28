@@ -5,6 +5,13 @@ exports.createUser = (req, res) => {
 
   user.save((err, result) => {
     if (err) {
+      res.status(400).json({
+        status: res.statusCode,
+        result: {
+          error: error,
+        },
+      })
+    } else {
       res.status(201).json({
         status: res.statusCode,
         result: {
@@ -12,13 +19,7 @@ exports.createUser = (req, res) => {
           user: result,
         },
       })
-    } else {
-      res.status(500).json({
-        status: res.statusCode,
-        result: {
-          error: error,
-        },
-      })
+      
     }
   })
 }
@@ -31,7 +32,7 @@ exports.getAllUsers = async (req, res) => {
       result: result,
     })
   } catch (error) {
-    res.status(500).json({
+    res.status(400).json({
       status: res.statusCode,
       result: {
         error: error,
@@ -48,7 +49,7 @@ exports.getUser = async (req, res) => {
       result: result,
     })
   } catch (error) {
-    res.status(500).json({
+    res.status(400).json({
       status: res.statusCode,
       result: {
         error: error,
@@ -65,7 +66,7 @@ exports.deleteUser = async (req, res) => {
       result: result,
     })
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       status: res.statusCode,
       result: {
         error: error,
