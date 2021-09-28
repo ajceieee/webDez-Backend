@@ -1,6 +1,6 @@
 const Post = require('../models/posts.model')
 
-exports.createPost = (req, res, next) => {
+exports.createPost = (req, res) => {
   const post = new Post(req.body)
 
   post.save((err, result) => {
@@ -22,6 +22,7 @@ exports.createPost = (req, res, next) => {
     }
   })
 }
+
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find({})
@@ -38,9 +39,10 @@ exports.getAllPosts = async (req, res) => {
     })
   }
 }
-exports.getPost = (req, res) => {
+
+exports.getPost = async (req, res) => {
   try {
-    const posts = await Post.findById(req.params.id)
+    const posts = await Post.findById(req.params.id).populate('postedBy')
     res.status(200).json({
       status: res.statusCode,
       result: posts,
@@ -54,7 +56,8 @@ exports.getPost = (req, res) => {
     })
   }
 }
-exports.deletePost = (req, res) => {
+
+exports.deletePost = async (req, res) => {
   try {
     const posts = await Post.findByIdAndDelete(req.params.id)
     res.status(200).json({
@@ -70,6 +73,7 @@ exports.deletePost = (req, res) => {
     })
   }
 }
+
 exports.updatePost = (req, res) => {
   res.send('updatePost')
 }
