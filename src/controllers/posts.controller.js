@@ -25,7 +25,7 @@ exports.createPost = (req, res) => {
 
 exports.getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find({})
+    const posts = await Post.find({}).populate('postedBy')
     res.status(200).json({
       status: res.statusCode,
       result: posts,
