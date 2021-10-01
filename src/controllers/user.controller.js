@@ -75,4 +75,3 @@ exports.deleteUser = async (req, res) => {
   }
 }
 
-exports.updateUser = (req, res) => {}
