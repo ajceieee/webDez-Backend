@@ -19,7 +19,6 @@ exports.createUser = (req, res) => {
           user: result,
         },
       })
-      
     }
   })
 }
@@ -75,3 +74,4 @@ exports.deleteUser = async (req, res) => {
   }
 }
 
+exports.updateUser = (req, res) => {}
