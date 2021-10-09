@@ -1,26 +1,28 @@
 const Post = require('../models/posts.model')
 
 exports.createPost = (req, res) => {
-  const post = new Post(req.body)
+  // const post = new Post(req.body)
+  console.log(req.body)
+  console.log(req.file)
+  // post.save((err, result) => {
+  //   if (err) {
+  //     res.status(400).json({
+  //       status: res.statusCode,
+  //       result: {
+  //         error: err,
+  //       },
+  //     })
+  //   } else {
 
-  post.save((err, result) => {
-    if (err) {
-      res.status(400).json({
-        status: res.statusCode,
-        result: {
-          error: err,
-        },
-      })
-    } else {
-      res.status(201).json({
-        status: res.statusCode,
-        result: {
-          msg: 'Post created successFully',
-          user: result,
-        },
-      })
-    }
-  })
+  //     res.status(201).json({
+  //       status: res.statusCode,
+  //       result: {
+  //         msg: 'Post created successFully',
+  //         user: result,
+  //       },
+  //     })
+  //   }
+  // })
 }
 
 exports.getAllPosts = async (req, res) => {
