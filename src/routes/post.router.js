@@ -1,6 +1,6 @@
 const express = require('express')
 const userController = require('../controllers/posts.controller')
-
+const upload = require('../../services/imgup.service')
 const router = express.Router()
 
 router
@@ -12,6 +12,6 @@ router
 router
   .route('/')
   .get(userController.getAllPosts)
-  .post(userController.createPost)
+  .post(upload.single('photoUrl'), userController.createPost)
 
 module.exports = router
